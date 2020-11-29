@@ -11,6 +11,7 @@ export const mockRecipes: Recipe[] = [
      4. Using a spatula, ease around the edges of the omelette, then fold it over in half. When it starts to turn golden brown underneath, remove the pan from the heat and slide the omelette on to a plate.
     `,
     ingredients: ["2 eggs", "cheese", "salt", "black pepper"],
+    picture: 'https://www.paulinacocina.net/wp-content/uploads/2019/09/okokokok.jpg',
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ export const mockRecipes: Recipe[] = [
      3. Garnish salad with thin lemon slices.
     `,
     ingredients: ["salad", "2 tomatoes", "2 avocados", "1 tooth garlic", "1 onion", "lemon juice", "salt", "pepper"],
+    picture: 'https://skinnyms.com/wp-content/uploads/2015/07/Avocado-Tomatoes-Cucumber-Salad-Recipe-1.jpg',
   },
   {
     id: 3,
@@ -40,5 +42,6 @@ export const mockRecipes: Recipe[] = [
       "oregano",
       "salt",
     ],
+    picture: 'https://static01.nyt.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-articleLarge.jpg',
   },
 ];

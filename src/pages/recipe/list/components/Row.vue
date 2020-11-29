@@ -1,5 +1,8 @@
 <template>
   <tr>
+    <td :class="$style.picture">
+      <img :src="recipe.picture" :alt="recipe.name">
+    </td>
     <td :class="$style.name">
       <span>{{ recipe.name }}</span>
     </td>
@@ -51,5 +54,11 @@ export default Vue.extend({
 
 .edit-button {
   text-align: end;
+}
+
+.picture img {
+  height: 100px;
+  object-fit: cover;
+  width: 180px;
 }
 </style>

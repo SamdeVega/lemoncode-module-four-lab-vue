@@ -1,5 +1,6 @@
 <template>
   <thead>
+    <th>Picture</th>
     <th>Name</th>
     <th>Description</th>
     <th>      
