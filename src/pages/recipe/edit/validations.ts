@@ -5,6 +5,7 @@ const validationSchema: ValidationSchema = {
   field: {
     name: [Validators.required],
     ingredients: [hasItems],
+    description: [Validators.required],
   },
 };
 
