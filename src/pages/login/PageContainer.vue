@@ -1,5 +1,5 @@
 <template>
-  <login-page v-bind="{ login, updateLogin, loginRequest, loginError }" />
+  <login-page v-bind="{ login, updateLogin, loginRequest, loginError, requestError }" />
 </template>
 
 <script lang="ts">
@@ -17,7 +17,8 @@ export default Vue.extend({
   data() {
     return {
       login: createEmptyLogin(),
-      loginError: createEmptyLoginError()
+      loginError: createEmptyLoginError(),
+      requestError: '',
     };
   },
   methods: {
@@ -35,21 +36,17 @@ export default Vue.extend({
       });
     },
     loginRequest() {
+      this.requestError = ''
       validation.validateForm(this.login).then(result => {
         if (result.succeeded) {
-
           const loginModel = mapLoginVMToModel(this.login);
           loginRequest(loginModel)
             .then(() => {
               this.$router.push(baseRoutes.recipe);
             })
-            .catch(error =>
-              alert(
-                `Este mensaje debes implementarlo con el componente Snackbar de Vuetify ;) => ${error}`
-              )
-            );
-
-
+            .catch(error => {
+              this.requestError = error
+            });
         } else {
           this.loginError = {
             ...this.loginError,

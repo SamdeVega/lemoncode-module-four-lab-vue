@@ -37,6 +37,7 @@ export default Vue.extend({
 
 <style module>
 .name {
+  padding-left: 15px;
   width: 25%;
 }
 
@@ -59,6 +60,6 @@ export default Vue.extend({
 .picture img {
   height: 100px;
   object-fit: cover;
-  width: 180px;
+  width: 100%;
 }
 </style>

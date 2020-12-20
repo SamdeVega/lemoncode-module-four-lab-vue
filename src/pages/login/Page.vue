@@ -30,6 +30,7 @@ export default Vue.extend({
     loginError: { required: true },
     updateLogin: { required: true },
     loginRequest: { required: true },
+    requestError: { required: '' },
   } as FormProps,
 });
 </script>

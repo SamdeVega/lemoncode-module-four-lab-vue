@@ -1,12 +1,18 @@
 <template>
-  <table class="table">
-    <header-component />
-    <tbody>
-      <template v-for="recipe in recipes">
-        <row-component :key="recipe.id" :recipe="recipe" />
-      </template>
-    </tbody>
-  </table>
+  <v-data-table
+    :headers="[
+      { text: 'Picture', value: 'picture' },
+      { text: 'Name', value: 'name' },
+      { text: 'Description', value: 'description' },
+      { text: '' },
+    ]"
+    :items="recipes"
+    item-key="name"
+  >
+    <template v-slot:[`item`]="{ item }">
+      <row-component :key="item.id" :recipe="item" />
+    </template>
+  </v-data-table>
 </template>
 
 <script lang="ts">

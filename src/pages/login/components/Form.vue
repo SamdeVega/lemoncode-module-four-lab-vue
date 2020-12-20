@@ -16,6 +16,7 @@
       @blur="() => updateLogin('password', login.password)"
     />
     <v-btn type="submit" color="info" @click.prevent="handleOnClick">Login</v-btn>
+    <SnackbarComponent :message="requestError" v-if="requestError" />
   </v-form>
 </template>
 
@@ -23,6 +24,7 @@
 import Vue, { PropOptions, VueConstructor } from "vue";
 import { FormProps } from "../formProps";
 import { ResultLoginError } from "../viewModel";
+import { SnackbarComponent } from "../../../common/components";
 
 interface Refs {
   $refs: {
@@ -37,6 +39,7 @@ export default (Vue as VueConstructor<Vue & Refs>).extend({
     loginError: { required: true },
     updateLogin: { required: true },
     loginRequest: { required: true },
+    requestError: { required: '' },
   } as FormProps,
   data() {
     return {
@@ -63,5 +66,8 @@ export default (Vue as VueConstructor<Vue & Refs>).extend({
       this.loginRequest();
     },
   },
+  components: {
+    SnackbarComponent,
+  }
 });
 </script>
