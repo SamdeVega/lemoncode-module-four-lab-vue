@@ -1,5 +1,5 @@
 <template>
-  <recipe-list-page v-bind="{ searchText, recipes: filteredRecipes, onSearch }" />
+  <recipe-list-page v-bind="{ searchText, recipes: filteredRecipes, onSearch, onDelete }" />
 </template>
 
 <script lang="ts">
@@ -9,6 +9,7 @@ import { filterRecipesByCommaSeparatedText } from "./business/filterRecipeBusine
 import { mapRecipeListModelToVm } from "./mapper";
 import { Recipe } from "./viewModel";
 import RecipeListPage from "./Page.vue";
+import { deleteRecipe } from "../../../rest-api/api/recipe"
 
 export default Vue.extend({
   name: "RecipeListPageContainer",
@@ -36,6 +37,10 @@ export default Vue.extend({
   methods: {
     onSearch(value: string) {
       this.searchText = value;
+    },
+    onDelete(recipeId: number) {
+      deleteRecipe(recipeId)
+      .then(recipes => this.recipes = recipes)
     },
   },
 });

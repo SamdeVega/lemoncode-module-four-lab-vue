@@ -10,7 +10,7 @@
     item-key="name"
   >
     <template v-slot:[`item`]="{ item }">
-      <row-component :key="item.id" :recipe="item" />
+      <row-component :key="item.id" :recipe="item" v-bind="{ onDelete }" />
     </template>
   </v-data-table>
 </template>
@@ -26,6 +26,7 @@ export default Vue.extend({
   components: { HeaderComponent, RowComponent },
   props: {
     recipes: { required: true } as PropOptions<Recipe[]>,
+    onDelete: { required: true } as PropOptions<(recipeId: number) => void>,
   },
 });
 </script>

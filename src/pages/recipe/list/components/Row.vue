@@ -13,23 +13,30 @@
       <v-btn text icon :to="routeEdit">
         <v-icon>edit</v-icon>
       </v-btn>
+      <v-btn text icon v-on:click="onDelete(recipe.id)">
+        <v-icon>delete</v-icon>
+      </v-btn>
     </td>
   </tr>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
-import { baseRoutes } from "../../../../router";
+import { privateRoutes } from "../../../../router";
 import { Recipe } from "../viewModel";
 
 export default Vue.extend({
   name: "RowComponent",
   props: {
     recipe: { required: true } as PropOptions<Recipe>,
+    onDelete: { required: true } as PropOptions<(recipeId: number) => void>,
   },
   computed: {
     routeEdit(): string {
-      return `${baseRoutes.recipe}/${this.recipe.id}`;
+      return `${privateRoutes.recipe}/${this.recipe.id}`;
+    },
+    deleteRecipe(): void {
+
     }
   },
 });

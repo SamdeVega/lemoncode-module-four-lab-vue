@@ -15,7 +15,7 @@ export const fetchRecipeById = (id: number): Promise<Recipe> => {
 export const save = (recipe: Recipe): Promise<string> => {
   const index = recipes.findIndex((r) => r.id === recipe.id);
 
-  return index >= 0 ? saveRecipeByIndex(index, recipe) : Promise.reject("Something was wrong saving recipe :(");
+  return index >= 0 ? saveRecipeByIndex(index, recipe) : saveNewRecipe(recipe);
 };
 
 const saveRecipeByIndex = (index: number, recipe: Recipe): Promise<string> => {
@@ -23,3 +23,15 @@ const saveRecipeByIndex = (index: number, recipe: Recipe): Promise<string> => {
 
   return Promise.resolve("Save recipe success");
 };
+
+const saveNewRecipe = (recipe: Recipe): Promise<string> => {
+  recipe.id = recipes[recipes.length - 1].id + 1
+  recipes = [...recipes, recipe]
+
+  return Promise.resolve("Create recipe success")
+}
+
+export const deleteRecipe = (recipeId: number): Promise<Recipe[]> => {
+  recipes = recipes.filter(recipe => recipe.id != recipeId)
+  return Promise.resolve(recipes)
+}

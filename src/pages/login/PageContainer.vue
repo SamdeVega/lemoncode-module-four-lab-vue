@@ -4,8 +4,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { loginRequest } from "../../rest-api/api/login";
-import { baseRoutes } from "../../router";
+import { loginRequest } from "../../rest-api/api/user";
+import { privateRoutes } from "../../router";
 import LoginPage from "./Page.vue";
 import { createEmptyLogin, Login, createEmptyLoginError } from "./viewModel";
 import { mapLoginVMToModel } from "./mapper";
@@ -42,7 +42,7 @@ export default Vue.extend({
           const loginModel = mapLoginVMToModel(this.login);
           loginRequest(loginModel)
             .then(() => {
-              this.$router.push(baseRoutes.recipe);
+              this.$router.push(privateRoutes.recipe);
             })
             .catch(error => {
               this.requestError = error
